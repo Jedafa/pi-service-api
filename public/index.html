@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>abltx · free-pi API</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<!-- ───────────────────────────── login ───────────────────────────── -->
+<div id="login" class="login-wrap" hidden>
+  <form id="login-form" class="login-card">
+    <div class="brand">
+      <img src="/logo.svg" alt="" width="44" height="44" />
+      <div>
+        <h1>abltx</h1>
+        <p>free-pi как API + панель</p>
+      </div>
+    </div>
+    <label for="password">Пароль панели</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required autofocus />
+    <button type="submit">Войти</button>
+    <p class="hint" id="login-hint">Первый запуск: пароль напечатан в консоли сервера и лежит в <code>abltx/data/first-run-password.txt</code>.</p>
+    <p class="error" id="login-error" hidden></p>
+  </form>
+</div>
+
+<!-- ───────────────────────────── app ───────────────────────────── -->
+<div id="app" class="shell" hidden>
+  <aside class="sidebar">
+    <div class="brand small">
+      <img src="/logo.svg" alt="" width="30" height="30" />
+      <strong>abltx</strong>
+    </div>
+    <nav id="nav">
+      <button data-view="overview" class="active"><span>◈</span> Обзор</button>
+      <button data-view="accounts"><span>☺</span> Аккаунты</button>
+      <button data-view="models"><span>❋</span> Модели</button>
+      <button data-view="keys"><span>⚿</span> API-ключи</button>
+      <button data-view="playground"><span>▶</span> Плейграунд</button>
+      <button data-view="logs"><span>≡</span> Логи</button>
+      <button data-view="settings"><span>⚙</span> Настройки</button>
+      <button data-view="docs"><span>◫</span> Документация</button>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="pill" id="token-pill">токен: …</div>
+      <button id="logout" class="ghost">Выйти</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <div>
+        <h2 id="view-title">Обзор</h2>
+        <p class="sub" id="view-sub">Статус абонемента free-pi и адрес вашего API</p>
+      </div>
+      <div class="meter" id="meter" title="Остаток на сегодня"></div>
+    </header>
+    <div id="view" class="view"></div>
+  </main>
+</div>
+
+<script src="/app.js" type="module"></script>
+<script>
+// dev aid: layout metrics in the title (overflow offenders)
+setTimeout(()=>{const w=document.documentElement.scrollWidth;const bad=[...document.querySelectorAll('*')].filter(n=>n.getBoundingClientRect().right>innerWidth+2).map(n=>(n.tagName+'.'+n.className).slice(0,40));document.title=`sw=${w} vw=${innerWidth} APP=${document.getElementById('app').hidden?'hidden':'shown'} bad=${[...new Set(bad)].slice(0,10).join(' | ')}`},3000)
+</script>
+</body>
+</html>

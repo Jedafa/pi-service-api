@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=abltx — free-pi API
+Comment=Остановиться нельзя: OpenAI-совместимый API и панель поверх free-pi
+Exec=bash -lc 'cd "$HOME/Desktop/abltx" && exec node server.mjs --open'
+Path=/home/virus374/Desktop/abltx
+Terminal=true
+Categories=Development;Network;
+Icon=/home/virus374/Desktop/abltx/public/logo.svg

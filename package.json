@@ -1,0 +1,14 @@
+{
+  "name": "abltx",
+  "version": "1.0.0",
+  "private": true,
+  "description": "abltx — OpenAI-compatible API + web panel on top of free-pi (free-pi-cli). No terminal needed.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs"
+  }
+}
